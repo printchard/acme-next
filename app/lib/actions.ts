@@ -103,11 +103,7 @@ export async function updateInvoice(
 }
 
 export async function deleteInvoice(id: string) {
-  try {
-    await sql`DELETE FROM invoices WHERE id = ${id}`;
-  } catch {
-    return { message: "Database Error: Failed to Create Invoice." };
-  }
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
 
   revalidatePath("/dashboard/invoices");
 }
